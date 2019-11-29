@@ -30,7 +30,8 @@
 
 <script>
   import SystemInformation from '../components/home/SystemInformation'
-
+  console.log(process.env.HOMEDRIVE+process.env.HOMEPATH);
+  //这里输出的是NAN,但是在F12中输入 process.env.HOMEDRIVE+process.env.HOMEPATH  又是正确的值
   export default {
     name: 'landing-page',
     components: { SystemInformation },

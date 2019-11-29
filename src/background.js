@@ -1,9 +1,8 @@
 'use strict';
-import {app, protocol, BrowserWindow, ipcMain, Menu, Tray, nativeImage, screen, session} from 'electron'
+import {app, protocol, BrowserWindow, ipcMain, Menu} from 'electron'
 import {autoUpdater} from 'electron-updater'
 import {createProtocol} from 'vue-cli-plugin-electron-builder/lib'
 const packageInfo=require('../package.json');
-const path = require('path');
 const isDevelopment = process.env.NODE_ENV !== 'production';
 protocol.registerSchemesAsPrivileged([{scheme: 'app', privileges: {secure: true, standard: true}}]);
 
@@ -97,7 +96,11 @@ function createWindow(data) {
     }
     win = windowControl.create({
         frame:true,
-        url:"home"
+        url:"home",
+        callback:()=>{
+            console.log(process.env.HOMEDRIVE+process.env.HOMEPATH)
+            //这里输出是正常的，是电脑用户的文件夹
+        }
     });
 }
 const gotTheLock = app.requestSingleInstanceLock();
