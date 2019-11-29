@@ -2,10 +2,6 @@
 
 > electron+cli3
 
-## 使用的项目
-- [CloudMusic](https://github.com/zjinh/CloudMusic)
-- [CloudWeather](https://github.com/zjinh/CloudWeather)
-- [Cloud-Web](https://cloud.zjinh.cn/)
 ## 个人博客
 - [Blog](https://blog.zjinh.cn/)
 ## 🖥 运行效果
