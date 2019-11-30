@@ -33,12 +33,7 @@ function createWindow(data) {
   }
   win = windowControl.create({
     frame: true,
-    url: "home",
-    callback: () => {
-      // eslint-disable-next-line no-undef
-      console.log(__dirname, __static);
-      console.log(app.getPath("userData"));
-    }
+    url: "home"
   });
 }
 const gotTheLock = app.requestSingleInstanceLock();
