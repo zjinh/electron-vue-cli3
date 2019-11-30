@@ -1,6 +1,7 @@
 "use strict";
 import { app, protocol, ipcMain } from "electron";
 import { autoUpdater } from "electron-updater";
+import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import windowControl from "./tools/main/windowControl";
 protocol.registerSchemesAsPrivileged([
   { scheme: "app", privileges: { secure: true, standard: true } }
@@ -52,6 +53,7 @@ if (!gotTheLock) {
   });
   app.on("ready", function() {
     bindIpc(); //初始化ipc
+    createProtocol("app");
     app.commandLine.appendSwitch("autoplay-policy", "no-user-gesture-required");
     createWindow(true);
   });
