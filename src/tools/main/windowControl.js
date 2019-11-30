@@ -19,7 +19,7 @@ export default {
       show: false,
       webPreferences: {
         nodeIntegration: true,
-        webSecurity: !(process.env.NODE_ENV === "development")
+        webSecurity: false
       }
     };
     options = Object.assign(defaultOptions, options);
