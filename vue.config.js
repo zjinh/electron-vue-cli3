@@ -1,10 +1,12 @@
-'use strict'
-const path = require('path');
-const packageInfo=require('./package.json');
+"use strict";
+const path = require("path");
 function resolve(dir) {
-  return path.join(__dirname, dir)
+  return path.join(__dirname, dir);
 }
-// const name = 'electron-vue-example' // page title
+const productName = "test";
+const appId = "com.zjinh.app." + productName;
+const menuCategory = "electron-cli3";
+const shortcutName = "cli3-测试";
 const port = 9020;
 module.exports = {
   // publicPath: '/',
@@ -22,27 +24,25 @@ module.exports = {
   },
   chainWebpack(config) {
     // alias
-    config.resolve.alias.set('@', resolve('src'))
+    config.resolve.alias.set("@", resolve("src"));
   },
-  pluginOptions:{
-    electronBuilder:{
-      builderOptions:{
-        productName:packageInfo.name,
-        appId:packageInfo.appId,
+  pluginOptions: {
+    electronBuilder: {
+      builderOptions: {
+        productName: productName,
+        appId: appId,
         directories: {
-          "output": "build"
+          output: "build"
         },
         win: {
           icon: "public/icon/icon.ico",
           artifactName: "${productName}_setup_${version}.${ext}",
-          target: [
-            "nsis"
-          ]
+          target: ["nsis"]
         },
         nsis: {
           oneClick: false,
-          menuCategory: "开始菜单目录",
-          shortcutName: "开始菜单名称",
+          menuCategory: menuCategory,
+          shortcutName: shortcutName,
           allowToChangeInstallationDirectory: true,
           perMachine: true,
           runAfterFinish: true
