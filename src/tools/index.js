@@ -1,6 +1,7 @@
 import Vue from "vue";
 import axios from "axios/index";
-import { electron, ipcRenderer } from "electron";
+import electron from "electron";
+const ipcRenderer = electron.ipcRenderer;
 const packageInfo = require("../../package.json");
 const path = require("path");
 
