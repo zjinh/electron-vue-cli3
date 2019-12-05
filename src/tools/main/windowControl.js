@@ -18,6 +18,7 @@ export default {
       alwaysOnTop: false,
       show: false,
       webPreferences: {
+        webviewTag: true,
         nodeIntegration: true,
         webSecurity: false
       }
