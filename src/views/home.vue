@@ -5,7 +5,7 @@
 				<span class="title">
 					vue+electron
 				</span>
-				<system-information/>
+				<system-information />
 			</div>
 			<div class="right-side">
 				<div class="doc">
@@ -32,9 +32,6 @@
 
 <script>
 import SystemInformation from '@/components/home/SystemInformation';
-
-console.log(process.env.HOMEDRIVE + process.env.HOMEPATH);
-//这里输出的是NAN,但是在F12中输入 process.env.HOMEDRIVE+process.env.HOMEPATH  又是正确的值
 export default {
 	name: 'landing-page',
 	components: { SystemInformation },
@@ -42,6 +39,11 @@ export default {
 		open(link) {
 			this.$electron.shell.openExternal(link);
 		}
+	},
+	mounted() {
+		setTimeout(() => {
+			this.$notify('欢迎使用');
+		}, 100);
 	}
 };
 </script>

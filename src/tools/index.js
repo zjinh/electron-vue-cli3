@@ -139,9 +139,12 @@ JSON.handle = function(data) {
 Vue.path = Vue.prototype.$path = path; //path接口
 Vue.electron = Vue.prototype.$electron = electron; //electron
 Vue.ipc = Vue.prototype.$ipc = ipcRenderer; //ipc接口
-Vue.Notify = Vue.prototype.$notify = (msg, name) => {
-	new Notification(packageInfo.name || name, {
-		body: msg
-	});
+Vue.notify = Vue.prototype.$notify = (msg, name) => {
+	const notification = {
+		title: packageInfo.name || name,
+		body: msg,
+		icon: require('../assets/logo.png')
+	};
+	return new window.Notification(notification.title, notification);
 }; //通知接口
 /**************************************************************自定义从这开始**************************************************************/

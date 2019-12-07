@@ -2,6 +2,7 @@
   "name": "electron-vue-cli3",
   "author": "ZJINH",
   "description": "electron vue cli3",
+  "appId": "com.zjinh.app.test",
   "version": "1.0.0",
   "private": true,
   "scripts": {
