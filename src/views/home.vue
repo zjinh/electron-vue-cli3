@@ -6,15 +6,25 @@
 					vue+electron
 				</span>
 				<system-information />
+				<div class="doc">
+					<br>
+					<br>
+					<p>ipcRenderer已经挂载在vue上，使用this.$ipc</p>
+					<p>electron，使用this.$electron</p>
+					<p>this.$notify可实现系统消息弹窗</p>
+					<p>挂载代码在tools/index.js内</p>
+					<p>自动更新核心代码在background.js 9-42行</p>
+				</div>
 			</div>
 			<div class="right-side">
 				<div class="doc">
 					<div class="title">简介</div>
 					<p>
 						项目集成了vue cli3、electron。
-						<br />electron-updater <br />electron-builder <br />electron、ipcRenderer已经挂载至全局 <br />项目已使用单例运行模式，具体代码在background.js
+						<br />electron-updater <br />electron-builder <br />项目已使用单例运行模式，具体代码在background.js
 						109行-119行处
 					</p>
+
 				</div>
 				<div class="doc">
 					<div class="title alt">相关文档</div>
@@ -23,6 +33,11 @@
 					</button>
 					<button class="alt" @click="open('https://cn.vuejs.org/v2/guide/')">
 						Vue.js
+					</button>
+					<p>{{ message }}</p>
+					<button @click="checkUpdate" :disabled="percent > 0 && percent !== 100">
+						<span v-if="!loading">{{ CheckText }}</span>
+						<span v-else>{{ ProcessText }}</span>
 					</button>
 				</div>
 			</div>
@@ -35,9 +50,60 @@ import SystemInformation from '@/components/home/SystemInformation';
 export default {
 	name: 'landing-page',
 	components: { SystemInformation },
+	data() {
+		return {
+			CheckText: '检查更新',
+			ProcessText: '正在检查',
+			percent: 0,
+			message: '',
+			loading: false
+		};
+	},
+	created() {
+		this.bind();
+	},
 	methods: {
 		open(link) {
 			this.$electron.shell.openExternal(link);
+		},
+		bind() {
+			this.$ipc.on('check-for-update', (event, message) => {
+				this.message = message;
+				if (message === '检查更新出错, 请联系开发人员' || message === '现在使用的就是最新版本，不用更新') {
+					this.loading = false;
+				}
+				if (message === '最新版本已下载，点击安装进行更新') {
+					this.CheckText = '安装';
+					this.loading = false;
+					this.percent = 100;
+					this.checkUpdate = () => {
+						this.$ipc.send('system', 'update');
+					};
+				}
+			});
+			this.$ipc.on('update-down-success', (event, message) => {
+				alert('New ' + message.version);
+			});
+			this.$ipc.on('download-progress', (event, message) => {
+				this.$nextTick(() => {
+					this.percent = parseInt(message.percent);
+					if (this.percent === 100) {
+						this.CheckText = '安装';
+						this.loading = false;
+						this.checkUpdate = () => {
+							this.$ipc.send('system', 'update');
+						};
+					}
+				});
+			});
+			window.onbeforeunload = () => {
+				if (this.percent > 0 && this.percent !== 100) {
+					return false;
+				}
+			};
+		},
+		checkUpdate() {
+			this.$ipc.send('system', 'check-for-update', 'https://github.com/zjinh/electron-vue-cli3');
 		}
 	},
 	mounted() {
@@ -62,7 +128,7 @@ body {
 #wrapper {
 	background: #fff;
 	height: 100vh;
-	padding: 60px 80px;
+	padding: 30px 40px;
 	width: 100vw;
 }
 
