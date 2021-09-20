@@ -18,9 +18,13 @@ export default {
 			alwaysOnTop: false,
 			show: false,
 			webPreferences: {
-				webviewTag: true,
 				nodeIntegration: true,
-				webSecurity: false
+				webSecurity: false,
+				scrollBounce: true,
+				contextIsolation: false,
+				enableRemoteModule: true,
+				plugins: true,
+				webviewTag: true
 			}
 		};
 		options = Object.assign(defaultOptions, options);

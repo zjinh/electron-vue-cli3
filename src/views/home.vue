@@ -7,8 +7,8 @@
 				</span>
 				<system-information />
 				<div class="doc">
-					<br>
-					<br>
+					<br />
+					<br />
 					<p>ipcRenderer已经挂载在vue上，使用this.$ipc</p>
 					<p>electron，使用this.$electron</p>
 					<p>this.$notify可实现系统消息弹窗</p>
@@ -21,10 +21,8 @@
 					<div class="title">简介</div>
 					<p>
 						项目集成了vue cli3、electron。
-						<br />electron-updater <br />electron-builder <br />项目已使用单例运行模式，具体代码在background.js
-						109行-119行处
+						<br />electron-updater <br />electron-builder <br />项目已使用单例运行模式，具体代码在background.js 109行-119行处
 					</p>
-
 				</div>
 				<div class="doc">
 					<div class="title alt">相关文档</div>
