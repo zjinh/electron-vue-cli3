@@ -1,6 +1,6 @@
 # electron-vue-cli3(electron和vue cli3的基础开发示例)
 
-> electron+cli3
+> electron+cli3+ts
 
 ## 个人博客
 - [Blog](https://blog.zjinh.cn/)
@@ -27,8 +27,10 @@ npm config set ELECTRON_MIRROR='https://npm.taobao.org/mirrors/electron/'
 ### 运行项目
 ```bash
 npm run dev
+npm run dev:web
 ```
 ### 打包项目
 ```bash
 npm run build
+npm run build:web
 ```

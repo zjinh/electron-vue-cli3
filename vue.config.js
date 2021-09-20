@@ -1,4 +1,3 @@
-'use strict';
 const path = require('path');
 function resolve(dir) {
 	return path.join(__dirname, dir);
@@ -9,18 +8,18 @@ const menuCategory = 'electron-cli3';
 const shortcutName = 'cli3-测试';
 const port = 9020;
 module.exports = {
-	// publicPath: '/',
-	// outputDir: 'dist',
-	// assetsDir: 'static',
-	// lintOnSave: process.env.NODE_ENV === 'development',
-	// productionSourceMap: false,
+	/*publicPath: '/',
+	outputDir: 'dist',
+	assetsDir: 'static',
+	lintOnSave: process.env.NODE_ENV === 'development',
+	productionSourceMap: false,*/
 	devServer: {
-		port: port
-		//   open: true,
-		//   overlay: {
-		//     warnings: false,
-		//     errors: true
-		//   }
+		port: port,
+		/*  open: true,
+		  overlay: {
+		    warnings: false,
+		    errors: true
+		  }*/
 	},
 	chainWebpack(config) {
 		// alias
@@ -32,12 +31,12 @@ module.exports = {
 				productName: productName,
 				appId: appId,
 				directories: {
-					output: 'build'
+					output: 'build',
 				},
 				win: {
 					icon: 'public/icon/icon.ico',
 					artifactName: '${productName}_setup_${version}.${ext}',
-					target: ['nsis']
+					target: ['nsis'],
 				},
 				nsis: {
 					oneClick: false,
@@ -45,7 +44,7 @@ module.exports = {
 					shortcutName: shortcutName,
 					allowToChangeInstallationDirectory: true,
 					perMachine: true,
-					runAfterFinish: true
+					runAfterFinish: true,
 				},
 				dmg: {
 					contents: [
@@ -53,22 +52,22 @@ module.exports = {
 							x: 410,
 							y: 150,
 							type: 'link',
-							path: '/Applications'
+							path: '/Applications',
 						},
 						{
 							x: 130,
 							y: 150,
-							type: 'file'
-						}
-					]
+							type: 'file',
+						},
+					],
 				},
 				mac: {
-					icon: 'public/icon/icon.icns'
+					icon: 'public/icon/icon.icns',
 				},
 				linux: {
-					icon: 'public/icon/icon.ico'
-				}
-			}
-		}
-	}
+					icon: 'public/icon/icon.ico',
+				},
+			},
+		},
+	},
 };
