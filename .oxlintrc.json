@@ -1,0 +1,9 @@
+{
+  "$schema": "https://oxc.rs/schema/oxlint.json",
+  "plugins": ["eslint", "typescript"],
+  "categories": {
+    "correctness": "warn",
+    "suspicious": "warn"
+  },
+  "ignorePatterns": ["node_modules/**", "out/**", "dist/**", "build/**", "coverage/**", "**/*.vue"]
+}

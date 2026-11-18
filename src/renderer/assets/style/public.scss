@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: '微软雅黑', sans-serif;
+}
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+:focus,
+:active {
+  outline: 0;
+}
+a {
+  text-decoration: none;
+}
+button,
+input,
+select,
+textarea {
+  border: none;
+  resize: none !important;
+}
+button {
+  cursor: pointer;
+}
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+#app,
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+  background: transparent none !important;
+}

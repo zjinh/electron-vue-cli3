@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": ["node_modules/**", "out/**", "dist/**", "build/**", "coverage/**"],
+  "singleQuote": true,
+  "semi": false,
+  "printWidth": 160,
+  "trailingComma": "none"
+}
